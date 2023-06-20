@@ -6,13 +6,9 @@ const useCanvas = () => {
   const { canvasRefState, setCanvasRef, setMode, mode } = useCanvasStore(
     (state) => state
   );
-  const canvasRef = useRef<HTMLCanvasElement>(canvasRefState);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      setCanvasRef(canvasRef.current);
-    }
     if (canvasRefState) {
       setContext(canvasRefState.getContext("2d"));
       if (context) {
@@ -36,11 +32,7 @@ const useCanvas = () => {
         getCursorPosition(canvasRefState, e);
       });
     }
-  }, [canvasRef, canvasRefState, context, setCanvasRef]);
-
-  const chooseMode = (mode: string) => {
-    setMode(mode);
-  };
+  }, [canvasRefState, context, setCanvasRef]);
 
   const canvasEvents = context
     ? {
@@ -55,11 +47,9 @@ const useCanvas = () => {
     : null;
 
   return {
-    canvas: setCanvasRef,
+    setCanvasRef,
     context,
-    canvasRef,
     canvasEvents,
-    chooseMode,
     setMode,
     mode,
   };
