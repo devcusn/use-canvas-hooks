@@ -1,6 +1,6 @@
 {
   "name": "use-canvas-hooks",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A react canvas hooks library",
   "scripts": {
     "rollup": "rollup -c"
