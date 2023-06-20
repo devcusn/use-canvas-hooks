@@ -41,6 +41,7 @@ const useCanvas = () => {
   const chooseMode = (mode: string) => {
     setMode(mode);
   };
+
   const canvasEvents = context
     ? {
         drawReactangle: (
