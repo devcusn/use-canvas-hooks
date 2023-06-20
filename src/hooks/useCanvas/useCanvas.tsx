@@ -3,7 +3,7 @@ import { drawRectangle, drawTriangle } from "./events/drawShapes";
 import { useCanvasStore } from "../../store/canvas/useCanvasStore";
 
 const useCanvas = () => {
-  const { canvasRefState, setCanvasRef, setMode, mode } = useCanvasStore(
+  const { canvasRefState, setMode, mode, setCanvasRef } = useCanvasStore(
     (state) => state
   );
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
@@ -32,7 +32,7 @@ const useCanvas = () => {
         getCursorPosition(canvasRefState, e);
       });
     }
-  }, [canvasRefState, context, setCanvasRef]);
+  }, [canvasRefState, context]);
 
   const canvasEvents = context
     ? {
